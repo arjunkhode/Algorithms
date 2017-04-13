@@ -1,0 +1,30 @@
+
+===============Question================
+
+Colleen is turning n years old! She has n candles of various heights on her cake, and candle i has height h'i. Because the taller candles tower over the shorter ones, Colleen can only blow out the tallest candles.
+
+Given the  for each individual candle, find and print the number of candles she can successfully blow out.
+-----------------------
+Sample Input 0
+
+4
+3 2 1 3
+
+2
+Explanation 
+
+We have one candle of height 1, one candle of height 2, and two candles of height 3. Colleen only blows out the tallest candles, meaning the candles where height=3. Because there are 2 such candles, we print 2 on a new line.
+
+================Answer=================
+
+```
+function main() {
+    var n = parseInt(readLine());
+    height = readLine().split(' ');
+    height = height.map(Number);
+    const max = Math.max(...height);
+    let count = 0;
+    height.filter(i=>{if(i===max) count++;})
+    console.log(count);
+}
+```
