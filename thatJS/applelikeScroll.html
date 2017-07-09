@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<body>
+
+<div class="filler">Scroll down to see some Apple style magic</div>
+<div class="box">
+  Humma
+</div>
+
+<style>
+body{
+  height: 1500px;
+}
+
+.box{
+  line-height: 130px;
+  position: relative;
+  top: 00px;
+  margin: 0px;
+background:plum;
+  width: 300px;
+  height: 130px;
+  transform: translate(0, 20%);
+  -webkit-transition: all 1s cubic-bezier(.10, .10, .82, 0); 
+-moz-transition: all 1s cubic-bezier(.10, .10, .82, 0); 
+}
+
+.filler{
+  height:600px;
+}
+</style>
+<script>
+let box=document.querySelector('.box');
+
+
+// console.log(boxstats);
+
+setInterval(function(){
+let boxstats= box.getBoundingClientRect();
+  if((boxstats.top>(window.scrollY))&&boxstats.bottom<(window.scrollY+window.innerHeight)) {
+   
+ box.style.background="lime";
+    box.style.transform="translate(0,0)";
+  // console.log("yes");
+}
+if((boxstats.top)<(window.scrollY)||boxstats.bottom>(window.scrollY+window.innerHeight)){box.style.background="plum";
+box.style.transform="translate(0,20%)";}
+
+
+},100);
+
+</script>
+
+</body>

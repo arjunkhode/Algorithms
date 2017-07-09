@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>christmas tree stars</title>
+</head>
+<body>
+
+<script>
+function doit(floors){
+// alert(floors);
+
+function dothat(n){
+let temp="";
+for(i=n,j=1;i>0;i--,j++){ // i is for spaces, j is for stars
+	for(m=i-1; m>0;m--){
+		temp+="s";
+	}
+	for(k=j;k>0;k--){
+			temp+="*";
+			if(j%2===1){ // if odd line
+				console.log(j/2);
+				for(l=Math.floor(j/2); l>0; l--) {
+					temp+="s";
+				}
+			}
+			else {
+				for(l=j/2; l>0; l--) {
+					temp+="s";
+				}	
+			}
+			// console.log(i);
+			}
+	temp+="\n";	
+	}
+	console.log(temp);
+	return temp;
+}
+
+const reg=new RegExp(/^\d+$/);
+if(reg.exec(floors)){
+	document.querySelector(".result").innerHTML=`
+	${dothat(floors)}
+	`;
+	}
+if(!reg.exec(floors)) {
+	alert("NaN");
+	}
+}
+</script>
+Enter no of floors: <input type="text" class="floors"/>
+<button type="submit" onClick="doit(document.querySelector('.floors').value);">Let us go!</button>
+<div class="result" style="background:navajowhite; display: inline-block;">
+	
+</div>
+</body>
+</html>
