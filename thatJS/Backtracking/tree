@@ -1,0 +1,54 @@
+
+class Node{
+	constructor(){
+	this.value = 0;
+	this.children = [];
+	}
+
+	setNode(val,children){
+		this.value = val;
+		this.children = [...children]; 
+	}
+
+}
+
+
+
+function visit(node){
+	console.log("The value of node is:",node.value);
+}
+
+function inorder(node){
+	if(node){
+		inorder(node.children[0]);
+		visit(node);
+		inorder(node.children[1])
+	}
+}
+
+//[0, 1,2,3,4,5,6,7,8,9,10] index
+//[0, 10,9,8,7,6,5,4,3,2,1] value
+// 0th index not considered
+
+function createTree(arr){
+// minimum value of i should be 1 at least (0th index is padding)
+	let i=1;
+	while(arr[i]){
+		let root = new Node; 
+		if(i===1) {var mainroot = root;}// if arr[i] exists, create a node
+		root.setNode(arr[i],[]);
+		if(arr[2*i]&&arr[2*i+1]){ // if has both children, pass children array
+			root.setNode(arr[i],[arr[2*i],arr[2*i+1]])
+		}
+		else if(arr[2*i]) { // if one child, pass on the only child
+			root.setNode(arr[i],arr[2*i])
+		}
+	i++;
+	}
+	// arr.splice(0,1); // delete first number from array
+	// createTree(arr,[]);
+	return mainroot;
+}
+
+inorder(createTree([0,10,9,8,7,6,5,4,3,2,1]));
+
